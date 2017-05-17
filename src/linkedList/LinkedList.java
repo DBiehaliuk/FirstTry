@@ -1,7 +1,6 @@
 package linkedList;
 
-
-public class LinkedList implements List{
+public class LinkedList implements List {
 
 	private Node head;
 	private Node tail;
@@ -31,8 +30,8 @@ public class LinkedList implements List{
 			return next;
 		}
 	}
-	
-	public LinkedList(){
+
+	public LinkedList() {
 		size = 0;
 	}
 
@@ -65,7 +64,7 @@ public class LinkedList implements List{
 
 	@Override
 	public void add(int element) {
-		
+
 		Node nd = new Node(element);
 		if (head == null & tail == null) {
 			head = tail = nd;
@@ -78,15 +77,15 @@ public class LinkedList implements List{
 
 	@Override
 	public void addIdx(int idx, int element) {
-		
+
 		checkIndex(idx);
 		Node nd = new Node(element);
 		Node position = head;
 		Integer count = 0;
-		
-		if (idx != 0){
+
+		if (idx != 0) {
 			while (position != null) {
-				if (count == idx - 1){
+				if (count == idx - 1) {
 					break;
 				}
 				position = position.getNext();
@@ -106,20 +105,21 @@ public class LinkedList implements List{
 			throw new IndexOutOfBoundsException();
 		}
 	}
+
 	@Override
 	public int set(int idx, int element) {
 		checkIndex(idx);
 		int oldValue = 0;
 		Node position = head;
 		int count = 0;
-		
+
 		while (count != idx) {
 			position = position.getNext();
 			count++;
 		}
 		oldValue = position.getElement();
 		position.setElement(element);
-		
+
 		return oldValue;
 	}
 
@@ -137,14 +137,14 @@ public class LinkedList implements List{
 	public int remove(int idx) {
 		checkIndex(idx);
 		Node position = head;
-		
+
 		for (int i = 0; i != idx - 1; i++) {
 			position = position.getNext();
 		}
-		
+
 		Node deleteNode = position.getNext();
 		position.setNext(position.getNext().getNext());
-		
+
 		int removeValue = deleteNode.getElement();
 		deleteNode.setNext(null);
 		return removeValue;
@@ -153,55 +153,52 @@ public class LinkedList implements List{
 	@Override
 	public int indexOff(int element) {
 		if (!isEmpty()) {
-            Node position = head;
-            int count = 0;
-            while (position != null) {
-                if (position.getElement() == element) {
-                    return count;
-                }
-                position = position.getNext();
-                count++;
-            }
-        }
+			Node position = head;
+			int count = 0;
+			while (position != null) {
+				if (position.getElement() == element) {
+					return count;
+				}
+				position = position.getNext();
+				count++;
+			}
+		}
 
-        return -1;
+		return -1;
 	}
 
-	
 	@Override
-    public String toString() {
-        StringBuilder builder = new StringBuilder();
-        builder.append("[");
-        if (head != null) {
-            Node nd = head;
-            while (nd != null) {
-                if (nd.next != null) {
-                    builder.append(nd.getElement() + ", ");
-                } else {
-                    builder.append(nd.getElement());
-                }
-                nd = nd.getNext();
-            }
-        }
-        builder.append("]");
-        return builder.toString();
-    }
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("[");
+		if (head != null) {
+			Node nd = head;
+			while (nd != null) {
+				if (nd.next != null) {
+					builder.append(nd.getElement() + ", ");
+				} else {
+					builder.append(nd.getElement());
+				}
+				nd = nd.getNext();
+			}
+		}
+		builder.append("]");
+		return builder.toString();
+	}
 
 	@Override
 	public void reverse() {
-		
+
 		Node reversed = null;
 		Node position = head;
-		
-		if(!isEmpty()) {
-			while (position != null) {
-				Node nd = position.next;
-				position.next = reversed;
-				reversed = position;
-				position = nd;
-			}
-			head = reversed;
-		} System.out.println("Empty");
-		
+
+		while (position != null) {
+			Node nd = position.next;
+			position.next = reversed;
+			reversed = position;
+			position = nd;
+		}
+		head = reversed;
+
 	}
 }

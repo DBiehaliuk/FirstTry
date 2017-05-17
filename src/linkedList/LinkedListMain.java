@@ -23,5 +23,12 @@ public class LinkedListMain {
 		
 		list.reverse();
 		System.out.println(list);
+		list.set(0, 123);
+		System.out.println(list);
+		//list.remove(0);
+		//System.out.println(list);
+		
+		System.out.println(list.indexOff(4));
+		System.out.println(list.get(0));
 	}
 }
