@@ -152,15 +152,21 @@ public class LinkedList implements List{
 
 	@Override
 	public int indexOff(int element) {
-		// TODO Auto-generated method stub
-		return 0;
+		if (!isEmpty()) {
+            Node position = head;
+            int count = 0;
+            while (position != null) {
+                if (position.getElement() == element) {
+                    return count;
+                }
+                position = position.getNext();
+                count++;
+            }
+        }
+
+        return -1;
 	}
 
-	@Override
-	public int lastIndexOff(int element) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
 	
 	@Override
     public String toString() {
@@ -180,4 +186,22 @@ public class LinkedList implements List{
         builder.append("]");
         return builder.toString();
     }
+
+	@Override
+	public void reverse() {
+		
+		Node reversed = null;
+		Node position = head;
+		
+		if(!isEmpty()) {
+			while (position != null) {
+				Node nd = position.next;
+				position.next = reversed;
+				reversed = position;
+				position = nd;
+			}
+			head = reversed;
+		} System.out.println("Empty");
+		
+	}
 }

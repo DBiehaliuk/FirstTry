@@ -6,4 +6,5 @@ public interface Collection {
 	public boolean isEmpty();
 	public boolean contains(int element);
 	public String toString();
+	public void reverse();
 }

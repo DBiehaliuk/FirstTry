@@ -8,6 +8,6 @@ public interface List extends Collection {
 	int get(int idx);
 	int remove(int idx);
 	int indexOff(int element);
-	int lastIndexOff(int element);
+	
 
 }

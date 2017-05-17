@@ -5,6 +5,8 @@ public class LinkedListMain {
 		
 		LinkedList list = new LinkedList();
 		
+		//list.reverse();
+		
 		list.add(2);
 		list.add(3);
 		list.add(23);
@@ -16,7 +18,10 @@ public class LinkedListMain {
 		
 		System.out.println(list);
 		
-		list.remove(1);
+		//list.remove(1);
+		//System.out.println(list);
+		
+		list.reverse();
 		System.out.println(list);
 	}
 }
